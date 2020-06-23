@@ -1,19 +1,20 @@
 package edu.ahs.robotics.java;
 
+import java.sql.SQLOutput;
+
 public class Point {
     private double x;
     private double y;
 
-    public Point(double x, double y){
-        this.x=x;
-        this.y=y;
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
 
     public double getX() {
         return x;
     }
-
 
 
     public double getY() {
@@ -29,13 +30,27 @@ public class Point {
                 '}';
     }
 
-    public double distanceFromOrigin(){
-
-       double aSquared=x*x;
-       double bSquared=y*y;
-        return Math.sqrt(aSquared+bSquared);
-
-   }
+    public double distanceFromOrigin() {
+        double distance = Math.sqrt(x*x+y*y);
+        return distance;
 
 
     }
+    public String getQuadrant(){
+        if (x > 0 && y > 0) {
+            return "Quadrant 1";
+        } else if (x<0 && y>0) {
+            return "Quadrant 2";
+        } else if (x<0 && y<0) {
+            return "Quadrant 3";
+        } else if (x>0 && y<0) {
+            return "Quadrant 4";
+        } else if (x==0 || y==0) {
+            return "axis";
+        }
+        else {
+            return null;
+
+        }
+    }
+}
