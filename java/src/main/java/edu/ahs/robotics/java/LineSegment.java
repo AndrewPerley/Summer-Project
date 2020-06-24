@@ -9,9 +9,20 @@ public class LineSegment {
         this.point2 = point2;
     }
 
-    public Point[] subDivide(int subSegment){
+    public Point[] subDivide(int subSegment) {
+        double deltaX = point2.getX() - point1.getX();
+        double deltaY = point2.getY() - point1.getX();
 
-        return null;
+        double xStep = deltaX / subSegment;
+        double yStep = deltaY / subSegment;
+        Point[] subdividePoints = new Point[subSegment - 1];
+        for (int i = 1; i < subSegment; i++) {
+        double subdivideXpoint = point1.getX()+xStep*i;
+        double subdivideYpoint = point1.getY()+yStep*i;
 
+        Point pointSubdivided = new Point(subdivideXpoint,subdivideYpoint);
+        subdividePoints[i-1]=pointSubdivided;
+        }
+        return subdividePoints;
     }
 }
