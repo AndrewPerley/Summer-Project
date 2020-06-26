@@ -37,4 +37,16 @@ public class PointTest {
         Point[] points = {new Point(5,7),new Point(3,8),new Point(6,10),new Point(-2,7)};
         assertEquals(points[2],a.closestPoint(points));
     }
+
+
+    @Test
+    public void distanceBetweenTwoPoints() {
+        Point a = new Point(1,1);
+        Point b = new Point(4,5);
+        assertEquals(5, Point.distanceBetweenTwoPoints(a,b), .0000001);
+
+
+    }
+
+
 }

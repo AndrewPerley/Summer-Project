@@ -21,4 +21,23 @@ public class LineSegmentTest {
             assertEquals(pointsExpected[i].getY(), pointsActual[i].getY(), 0.000001);
         }
     }
+
+    @Test
+    public void interpolate() {
+        Point a = new Point(1,1);
+        Point b = new Point(4,5);
+        LineSegment LS = new LineSegment(a,b);
+        Point p = LS.interpolate(7);
+        assertEquals(new Point(5.2,6.6),p);
+
+    }
+
+    @Test
+    public void midPoint() {
+        Point a = new Point(1,1);
+        Point b = new Point(4,5);
+        LineSegment LSmidPoint = new LineSegment(a,b);
+        Point m = LSmidPoint.midPoint();
+        assertEquals(new Point(2.5,3), m);
+    }
 }

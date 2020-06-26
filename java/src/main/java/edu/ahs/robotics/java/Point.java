@@ -1,6 +1,7 @@
 package edu.ahs.robotics.java;
 
 import java.sql.SQLOutput;
+import java.util.Objects;
 
 public class Point {
     private double x;
@@ -28,6 +29,20 @@ public class Point {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return Double.compare(point.x, x) < 0.00000001 &&
+                Double.compare(point.y, y) < 0.00000001;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     public double distanceFromOrigin() {
@@ -76,5 +91,17 @@ public class Point {
 
         return closestPoint;
     }
+
+    public static double distanceBetweenTwoPoints(Point a, Point b){
+        double deltaX = b.x - a.x;
+        double deltaY = b.y - a.y;
+        double distance = Math.sqrt(deltaX*deltaX+deltaY*deltaY);
+        return distance;
+
+    }
+
+
+
+
 }
 
